@@ -103,7 +103,8 @@
                               "0": {
                                  "value": null
                               }
-                           }
+                           },
+                           "ignore_for_consolidation": "true"
                         },
                         {
                            "id": "analyst",

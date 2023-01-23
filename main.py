@@ -7,12 +7,13 @@ with open("1.json") as f1, open("2.json") as f2:
 
 patch = deepdiff.DeepDiff(file1, file2, ignore_order=True, report_repetition=True)
 
-with open("patch.json", "w") as f:
-    json.dump(patch, f, indent=2)
+# print(patch)
+# with open("patch.json", "w") as f:
+#     json.dump(patch, f, indent=2)
 
 delta = deepdiff.Delta(patch)
 
-with open("final-data.json") as f:
+with open("data.json") as f:
     data = json.load(f)
 
 data = data+delta
