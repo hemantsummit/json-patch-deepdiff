@@ -1,0 +1,2378 @@
+{
+   "formType": "Business",
+   "templates": [
+      {
+         "id": "TMPL0001",
+         "keys": [
+            {
+               "key": "0",
+               "editable": true
+            }
+         ],
+         "name": "Business Balance Sheet",
+         "groups": [
+            {
+               "id": "business_balance_sheet",
+               "header": "Business Balance Sheet",
+               "sub_groups": [
+                  {
+                     "id": "business_balance_sheet_headers",
+                     "line_items": [
+                        {
+                           "id": "statement_date",
+                           "ctype": "date",
+                           "label": "Statement Date",
+                           "style": "header",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "ignore_for_consolidation": "true"
+                        },
+                        {
+                           "id": "months_covered",
+                           "ctype": "dropdown",
+                           "label": "Months Covered",
+                           "style": "header",
+                           "source": [
+                              1,
+                              2,
+                              3,
+                              4,
+                              5,
+                              6,
+                              7,
+                              8,
+                              9,
+                              10,
+                              11,
+                              12
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "ignore_for_consolidation": "true"
+                        },
+                        {
+                           "id": "audit_method",
+                           "ctype": "dropdown",
+                           "label": "Audit Method",
+                           "style": "header",
+                           "source": [
+                              "Co. Prep'd",
+                              "Tax Return",
+                              "CPA Compiled",
+                              "CPA Reviewed",
+                              "CPA Audited"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "ignore_for_consolidation": "true"
+                        },
+                        {
+                           "id": "statement_type",
+                           "ctype": "dropdown",
+                           "label": "Statement Type",
+                           "style": "header",
+                           "source": [
+                              "Annual",
+                              "Monthly",
+                              "Quarterly",
+                              "YTD",
+                              "Rolling"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "ignore_for_consolidation": "true"
+                        },
+                        {
+                           "id": "accountant",
+                           "ctype": "text",
+                           "label": "Accountant",
+                           "style": "header",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        },
+                        {
+                           "id": "analyst",
+                           "ctype": "text",
+                           "label": "Analyst",
+                           "style": "header",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "ignore_for_consolidation": "true"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "validations",
+                     "line_items": [
+                        {
+                           "id": "balance",
+                           "style": [
+                              "readOnly",
+                              "validator"
+                           ],
+                           "label": "Balance",
+                           "formula": "=(total_assets-total_liabilities-total_net_worth)",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Balance"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "current_assets_01",
+                     "header": "Current Assets",
+                     "line_items": [
+                        {
+                           "id": "cash",
+                           "tag": "Cash",
+                           "label": "Cash",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Cash"
+                           }
+                        },
+                        {
+                           "id": "ar",
+                           "tag": "A/R - Trade",
+                           "label": "A/R - Trade",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "A/R - Trade"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "bad_debt_section",
+                     "line_items": [
+                        {
+                           "id": "bad_debt_reserve",
+                           "label": "Bad Debt Reserve (-)",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Bad Debt Reserve (-)"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "current_assets_02",
+                     "line_items": [
+                        {
+                           "id": "inventory",
+                           "tag": "Inventory",
+                           "label": "Inventory",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Inventory"
+                           }
+                        },
+                        {
+                           "id": "other_current_assets",
+                           "tag": "Other Current Assets",
+                           "label": "Other Current Assets",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Other Current Assets"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_00",
+                     "line_items": [
+                        {
+                           "id": "total_current_assets",
+                           "label": "Total Current Assets",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(current_assets_01 - bad_debt_reserve + current_assets_02)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "fixed_assets",
+                     "header": "Non Current Assets",
+                     "line_items": [
+                        {
+                           "id": "land",
+                           "tag": "Land",
+                           "label": "Land",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Land"
+                           }
+                        },
+                        {
+                           "id": "land_for_lease",
+                           "tag": "Land",
+                           "label": "Land For Lease",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Land"
+                           }
+                        },
+                        {
+                           "id": "building_and_other_depreciable_assets",
+                           "tag": "Buildings and other depreciable assets",
+                           "label": "Buildings and other depreciable assets",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Buildings and other depreciable assets"
+                           }
+                        },
+                        {
+                           "id": "machinery_and_equipment",
+                           "tag": "Machinery & Equipment",
+                           "label": "Machinery & Equipment",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Machinery & Equipment"
+                           }
+                        },
+                        {
+                           "id": "furniture_and_fixtures",
+                           "tag": "Furniture & Fixtures",
+                           "label": "Furniture & Fixtures",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Furniture & Fixtures"
+                           }
+                        },
+                        {
+                           "id": "capital_leases",
+                           "tag": "Capital Leases",
+                           "label": "Capital Leases",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Capital Leases"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_01",
+                     "line_items": [
+                        {
+                           "id": "gross_fixed_assets",
+                           "label": "Gross Fixed Assets",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(fixed_assets)-200"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_02",
+                     "line_items": [
+                        {
+                           "id": "accumulated_deprec_minus",
+                           "label": "Accumulated Deprec (-)",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_03",
+                     "line_items": [
+                        {
+                           "id": "total_fixed_assets_net",
+                           "label": "Total Fixed Assets - Net",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(gross_fixed_assets - accumulated_deprec_minus)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "on_current_asset",
+                     "line_items": [
+                        {
+                           "id": "employee_advances",
+                           "tag": "Employee Advances / Related Party Receivables",
+                           "label": "Employee Advances / Related Party Receivables",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Employee Advances / Related Party Receivables"
+                           }
+                        },
+                        {
+                           "id": "long_term_ar_and_nr",
+                           "tag": "Long Term A/R & N/R",
+                           "label": "Long Term A/R & N/R",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Long Term A/R & N/R"
+                           }
+                        },
+                        {
+                           "id": "investments",
+                           "tag": "Investments",
+                           "label": "Investments",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Investments"
+                           }
+                        },
+                        {
+                           "id": "prepaids_or_deffereds",
+                           "tag": "Prepaids/Deferreds",
+                           "label": "Prepaids/Deferreds",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Prepaids/Deferreds"
+                           }
+                        },
+                        {
+                           "id": "net_intangible_assets",
+                           "tag": "Net Intangible Assets",
+                           "label": "Net Intangible Assets",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Net Intangible Assets"
+                           }
+                        },
+                        {
+                           "id": "other_non_current_assets",
+                           "tag": "Other Non-Current Assets",
+                           "label": "Other Non-Current Assets",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Other Non-Current Assets"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_04",
+                     "line_items": [
+                        {
+                           "id": "total_non_current_assets",
+                           "label": "Total Non-Current Assets",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(on_current_asset + (total_fixed_assets_net))"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_05",
+                     "line_items": [
+                        {
+                           "id": "total_assets",
+                           "label": "Total Assets",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_current_assets + total_non_current_assets)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "current_liabilities",
+                     "header": "Current Liabilities",
+                     "line_items": [
+                        {
+                           "id": "overdrafts",
+                           "tag": "Overdrafts",
+                           "label": "Overdrafts",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Overdrafts"
+                           }
+                        },
+                        {
+                           "id": "overdrafts_from_bank",
+                           "tag": "Overdrafts",
+                           "label": "Overdrafts From Bank",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Overdrafts From Bank"
+                           }
+                        },
+                        {
+                           "id": "lines_of_credit",
+                           "tag": "Lines of Credit",
+                           "label": "Lines of Credit",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Lines of Credit"
+                           }
+                        },
+                        {
+                           "id": "cptld_cp_capital_leases",
+                           "tag": "CPLTD + CP Capital Leases",
+                           "label": "CPLTD + CP Capital Leases",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "CPLTD + CP Capital Leases"
+                           }
+                        },
+                        {
+                           "id": "accounts_payable_trade",
+                           "tag": "Accounts Payable-Trade",
+                           "label": "Accounts Payable-Trade",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Accounts Payable-Trade"
+                           }
+                        },
+                        {
+                           "id": "loans_from_shareholders_related_party_payables",
+                           "tag": "Loans from Shareholders / Related Party Payables",
+                           "label": "Loans from Shareholders / Related Party Payables",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Loans from Shareholders / Related Party Payables"
+                           }
+                        },
+                        {
+                           "id": "accrued_expenses",
+                           "tag": "Accrued Expenses",
+                           "label": "Accrued Expenses",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Accrued Expenses"
+                           }
+                        },
+                        {
+                           "id": "other_current_liabilities",
+                           "tag": "Other Current Liabilities",
+                           "label": "Other Current Liabilities",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Other Current Liabilities"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_060",
+                     "line_items": [
+                        {
+                           "id": "total_current_liabilities",
+                           "label": "Total Current Liabilities",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(current_liabilities)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "non_current_liabilities",
+                     "header": "Non-Current Liabilities",
+                     "line_items": [
+                        {
+                           "id": "long_term_debt_bank",
+                           "tag": "Long Term Debt - Bank",
+                           "label": "Long Term Debt - Bank",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Long Term Debt - Bank"
+                           }
+                        },
+                        {
+                           "id": "capital_lease_obligations",
+                           "tag": "Capital Lease Obligations",
+                           "label": "Capital Lease Obligations",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Capital Lease Obligations"
+                           }
+                        },
+                        {
+                           "id": "other_non_current_liabilities",
+                           "tag": "Other Non-Current Liabilities",
+                           "label": "Other Non-Current Liabilities",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Other Non-Current Liabilities"
+                           }
+                        },
+                        {
+                           "id": "subordinated_debt_liab",
+                           "tag": "Subordinated Debt-Liab",
+                           "label": "Subordinated Debt-Liab",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Subordinated Debt-Liab"
+                           }
+                        },
+                        {
+                           "id": "minoritiy_interest_liab",
+                           "tag": "Minority Interest-Liab",
+                           "label": "Minority Interest-Liab",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Minority Interest-Liab"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_06",
+                     "line_items": [
+                        {
+                           "id": "total_non_current_liabilities",
+                           "label": "Total Non-Current Liabilities",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(non_current_liabilities)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_07",
+                     "line_items": [
+                        {
+                           "id": "total_liabilities",
+                           "label": "Total Liabilities",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_current_liabilities + total_non_current_liabilities)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "net_worth",
+                     "header": "Net Worth",
+                     "line_items": [
+                        {
+                           "id": "capital_stock",
+                           "tag": "Capital Stock",
+                           "label": "Capital Stock",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Capital Stock"
+                           }
+                        },
+                        {
+                           "id": "paid_in_capital",
+                           "tag": "Paid in Capital",
+                           "label": "Paid in Capital",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Paid in Capital"
+                           }
+                        },
+                        {
+                           "id": "retained_earnings",
+                           "tag": "Retained Earnings",
+                           "label": "Retained Earnings",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Retained Earnings"
+                           }
+                        },
+                        {
+                           "id": "treasury_stock",
+                           "tag": "Treasury Stock (-)",
+                           "label": "Treasury Stock (-)",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Treasury Stock (-)"
+                           }
+                        },
+                        {
+                           "id": "accumulated_oci",
+                           "tag": "Accumulated OCI",
+                           "label": "Accumulated OCI",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Accumulated OCI"
+                           }
+                        },
+                        {
+                           "id": "subordinated_debt_equity",
+                           "tag": "Subordinated Debt-Equity",
+                           "label": "Subordinated Debt-Equity",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Subordinated Debt-Equity"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_08",
+                     "line_items": [
+                        {
+                           "id": "total_net_worth",
+                           "label": "Total Net Worth",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(net_worth)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_09",
+                     "line_items": [
+                        {
+                           "id": "total_liabilities_and",
+                           "label": "Total Liabilities & Net Worth",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_liabilities + total_net_worth)"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id": "business_income_statement",
+               "header": "Business Income Statement",
+               "sub_groups": [
+                  {
+                     "id": "revenue",
+                     "header": "Revenue",
+                     "line_items": [
+                        {
+                           "id": "revenue_1",
+                           "tag": "Revenue",
+                           "label": "Revenue",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Revenue"
+                           }
+                        },
+                        {
+                           "id": "revenue_2",
+                           "tag": "Revenue",
+                           "label": "Revenue",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Revenue"
+                           }
+                        },
+                        {
+                           "id": "revenue_3",
+                           "tag": "Revenue",
+                           "label": "Revenue",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Revenue"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_10",
+                     "line_items": [
+                        {
+                           "id": "total_revenue",
+                           "label": "Total Revenue",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(revenue)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "cost_of_sales",
+                     "header": "Cost of Sales",
+                     "line_items": [
+                        {
+                           "id": "cost_of_sales_1",
+                           "tag": "Cost of Sales",
+                           "label": "Cost of Sales",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Cost of Sales"
+                           }
+                        },
+                        {
+                           "id": "cost_of_sales_2",
+                           "tag": "Cost of Sales",
+                           "label": "Cost of Sales",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Cost of Sales"
+                           }
+                        },
+                        {
+                           "id": "cost_of_sales_depreciation",
+                           "tag": "Cost of Sales-Depreciation",
+                           "label": "Cost of Sales-Depreciation",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Cost of Sales-Depreciation"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_11",
+                     "line_items": [
+                        {
+                           "id": "total_cost_of_sales",
+                           "label": "Total Cost of Sales",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(cost_of_sales)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_12",
+                     "line_items": [
+                        {
+                           "id": "gross_profit",
+                           "label": "Gross Profit",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_revenue - total_cost_of_sales)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_13",
+                     "line_items": [
+                        {
+                           "id": "gross_profit_margin_percent",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Gross Profit Margin (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(gross_profit / total_revenue)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "operating_expense",
+                     "header": "Operating Expenses",
+                     "line_items": [
+                        {
+                           "id": "general_and_admin_expenses",
+                           "tag": "General & Admin Expenses",
+                           "label": "General & Admin Expenses",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "General & Admin Expenses"
+                           }
+                        },
+                        {
+                           "id": "depreciation_expense",
+                           "tag": "Depreciation Expense",
+                           "label": "Depreciation Expense",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Depreciation Expense"
+                           }
+                        },
+                        {
+                           "id": "amortization_expense",
+                           "tag": "Amortization Expense",
+                           "label": "Amortization Expense",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Amortization Expense"
+                           }
+                        },
+                        {
+                           "id": "rent_expense",
+                           "tag": "Rent Expense",
+                           "label": "Rent Expense",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Rent Expense"
+                           }
+                        },
+                        {
+                           "id": "bad_debt_expense",
+                           "tag": "Bad Debt Expense",
+                           "label": "Bad Debt Expense",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Bad Debt Expense"
+                           }
+                        },
+                        {
+                           "id": "officers_compensation_expense",
+                           "tag": "Officers Compensation Expense",
+                           "label": "Officers Compensation Expense",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Officers Compensation Expense"
+                           }
+                        },
+                        {
+                           "id": "salaries_or_wages_expense",
+                           "tag": "Salaries/Wages Expense",
+                           "label": "Salaries/Wages Expense",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Salaries/Wages Expense"
+                           }
+                        },
+                        {
+                           "id": "other_expenses_per_books",
+                           "tag": "Other Expenses per Books",
+                           "label": "Other Expenses per Books",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Other Expenses per Books"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_14",
+                     "line_items": [
+                        {
+                           "id": "total_operating_expense",
+                           "label": "Total Operating Expense",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(operating_expense)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_15",
+                     "line_items": [
+                        {
+                           "id": "net_operating_profit",
+                           "label": "Net Operating Profit",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(gross_profit - total_operating_expense)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_16",
+                     "line_items": [
+                        {
+                           "id": "net_operating_profit_margin_percent",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Net Operating Profit Margin (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(net_operating_profit / total_revenue)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "interest_income_and_expenses",
+                     "header": "Interest Income & Expenses",
+                     "line_items": [
+                        {
+                           "id": "interest_expense_minus",
+                           "label": "Interest Expense (-)",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        },
+                        {
+                           "id": "interest_income",
+                           "label": "Interest Income",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "other_incomes",
+                     "header": "Other Incomes",
+                     "line_items": [
+                        {
+                           "id": "rental_income",
+                           "tag": "Rental Income",
+                           "label": "Rental Income",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Rental Income"
+                           }
+                        },
+                        {
+                           "id": "other_income",
+                           "tag": "Other Income",
+                           "label": "Other Income",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Other Income"
+                           }
+                        },
+                        {
+                           "id": "gain_or_loss_on_asset_sale",
+                           "tag": "Gain/(Loss) on Asset Sale",
+                           "label": "Gain/(Loss) on Asset Sale",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Gain/(Loss) on Asset Sale"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_17",
+                     "line_items": [
+                        {
+                           "id": "total_other_income_exp",
+                           "label": "Total Other Income(EXP)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(other_incomes)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_18",
+                     "line_items": [
+                        {
+                           "id": "profit_before_taxes",
+                           "label": "Profit Before Taxes",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(net_operating_profit - interest_expense_minus + interest_income + total_other_income_exp)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_19",
+                     "line_items": [
+                        {
+                           "id": "pretax_profit_margin",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Pre-tax Profit Margin (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(profit_before_taxes / total_revenue)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_20",
+                     "line_items": [
+                        {
+                           "id": "income_tax_expense",
+                           "label": "Income Tax Expense",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        },
+                        {
+                           "id": "minority_interest",
+                           "label": "Minority Interest Expense",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        },
+                        {
+                           "id": "loss_or_gain_from_discontinued_operations",
+                           "label": "Loss/(Gain) from Discontinued Operations",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        },
+                        {
+                           "id": "cumulative_effect_of_accting_chg_plus",
+                           "label": "Cumulative Effect of Acct'g Chg (+)",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        },
+                        {
+                           "id": "net_profit",
+                           "label": "Net Profit",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(profit_before_taxes - income_tax_expense - minority_interest - loss_or_gain_from_discontinued_operations + cumulative_effect_of_accting_chg_plus)"
+                        },
+                        {
+                           "id": "net_profit_margin_percent",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Net Profit Margin (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(net_profit / total_revenue)"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id": "additional_model_inputs",
+               "header": "Additional Model Inputs",
+               "sub_groups": [
+                  {
+                     "id": "additional_model_inputs_sub_grp",
+                     "line_items": [
+                        {
+                           "id": "actual_distributions",
+                           "label": "Actual Distributions",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        },
+                        {
+                           "id": "non_discretionary_distributions_estimate",
+                           "label": "Non-Discretionary Distributions Estimate",
+                           "style": "readOnly",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(if(income_tax_expense > 0, 0, 0.34 * net_profit))"
+                        },
+                        {
+                           "id": "lease_multiple_estimate",
+                           "label": "Lease Multiple Estimate",
+                           "def": "7",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        },
+                        {
+                           "id": "maintenance_capex_estimate",
+                           "label": "Maintenance Capex Estimate",
+                           "style": "readOnly",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=((depreciation_expense+cost_of_sales_depreciation)*0.5)"
+                        },
+                        {
+                           "id": "proforma_annual_debt_service",
+                           "label": "Pro Forma Annual Debt Service",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        },
+                        {
+                           "id": "proforma_debt_totals",
+                           "label": "Pro Forma Debt",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id": "business_cash_flow",
+               "header": "Business Cash Flow",
+               "sub_groups": [
+                  {
+                     "id": "cash_flow_debt_services",
+                     "header": "Cash Flow",
+                     "line_items": [
+                        {
+                           "id": "net_income",
+                           "label": "Net Income",
+                           "style": "readOnly",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(net_profit)"
+                        },
+                        {
+                           "id": "plus_interest_expense",
+                           "label": "+ Interest Expense",
+                           "style": "readOnly",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(interest_expense_minus)"
+                        },
+                        {
+                           "id": "plus_depreciation_expense",
+                           "label": "+ Depreciation Expense",
+                           "style": "readOnly",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(depreciation_expense + cost_of_sales_depreciation)"
+                        },
+                        {
+                           "id": "plus_amort_expense",
+                           "label": "+ Amortization Expense",
+                           "style": "readOnly",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(amortization_expense)"
+                        },
+                        {
+                           "id": "plus_income_tax_expense",
+                           "label": "+ Income Tax Expense",
+                           "style": "readOnly",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(income_tax_expense)"
+                        },
+                        {
+                           "id": "minus_asset_sale_expense",
+                           "label": "- Gain/(Loss) on Asset Sale",
+                           "style": "readOnly",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(gain_or_loss_on_asset_sale)"
+                        },
+                        {
+                           "id": "plus_pro_forma_income",
+                           "label": "+ Pro Forma Income (Annual)",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           }
+                        },
+                        {
+                           "id": "plus_other_non_cash_cash",
+                           "label": "+ or - other recurring or non-recurring items",
+                           "tag": "+ or - other recurring or non-recurring items",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "+ or - other recurring or non-recurring items"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_21",
+                     "line_items": [
+                        {
+                           "id": "cash_flow_for_debt_service",
+                           "label": "Cash Flow Available for Debt Service",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(net_income + plus_interest_expense + plus_depreciation_expense + plus_amort_expense + plus_income_tax_expense - minus_asset_sale_expense + plus_pro_forma_income + plus_other_non_cash_cash)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "annual_debt_service_obligations",
+                     "header": "Existing Debt Service Obligations (Annualized)",
+                     "line_items": [
+                        {
+                           "id": "cpltd",
+                           "label": "CPLTD",
+                           "columns": {
+                              "0": {
+                                 "value": null,
+                                 "flag": {
+                                    "defChange": false
+                                 }
+                              }
+                           },
+                           "def": "=(cptld_cp_capital_leases)",
+                           "fallback": {
+                              "label": "CPLTD"
+                           }
+                        },
+                        {
+                           "id": "interest_expense",
+                           "label": "Interest Expense",
+                           "columns": {
+                              "0": {
+                                 "value": null,
+                                 "flag": {
+                                    "defChange": false
+                                 }
+                              }
+                           },
+                           "def": "=(plus_interest_expense)",
+                           "fallback": {
+                              "label": "Interest Expense"
+                           }
+                        },
+                        {
+                           "id": "loan_per_debt_schedule_1",
+                           "label": "Loan per Debt Schedule (input as needed)",
+                           "tag": "Loan per Debt Schedule",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Loan per Debt Schedule (input as needed)"
+                           }
+                        },
+                        {
+                           "id": "loan_per_debt_schedule_2",
+                           "label": "Loan per Debt Schedule (input as needed)",
+                           "tag": "Loan per Debt Schedule",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Loan per Debt Schedule (input as needed)"
+                           }
+                        },
+                        {
+                           "id": "loan_per_debt_schedule_3",
+                           "label": "Loan per Debt Schedule (input as needed)",
+                           "tag": "Loan per Debt Schedule",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Loan per Debt Schedule (input as needed)"
+                           }
+                        },
+                        {
+                           "id": "loan_per_debt_schedule_4",
+                           "label": "Loan per Debt Schedule (input as needed)",
+                           "tag": "Loan per Debt Schedule",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Loan per Debt Schedule (input as needed)"
+                           }
+                        },
+                        {
+                           "id": "loan_per_debt_schedule_6",
+                           "label": "Loan per Debt Schedule (input as needed)",
+                           "tag": "Loan per Debt Schedule",
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "fallback": {
+                              "label": "Loan per Debt Schedule (input as needed)"
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_22",
+                     "line_items": [
+                        {
+                           "id": "pro_forma_annual_debt_service",
+                           "label": "Pro Forma Annual Debt Service (from input above)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(proforma_annual_debt_service)"
+                        },
+                        {
+                           "id": "total_annual_debt_service_obligations",
+                           "label": "Total Annual Debt Service Obligations",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(annual_debt_service_obligations + pro_forma_annual_debt_service)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "sub_group_23",
+                     "line_items": [
+                        {
+                           "id": "debt_service_coverage_ratio",
+                           "ctype": "ratio",
+                           "label": "Debt Service Coverage Ratio (X)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(cash_flow_for_debt_service / total_annual_debt_service_obligations)"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "id": "ratio_analysis",
+               "header": "Ratio Analysis",
+               "sub_groups": [
+                  {
+                     "id": "liquidity",
+                     "header": "Liquidity",
+                     "line_items": [
+                        {
+                           "id": "working_capital",
+                           "label": "Working Capital",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_current_assets - total_current_liabilities)"
+                        },
+                        {
+                           "id": "quick_ratio",
+                           "ctype": "ratio",
+                           "label": "Quick Ratio",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=((total_current_assets - inventory - other_current_assets) / total_current_liabilities)"
+                        },
+                        {
+                           "id": "current_ratio",
+                           "ctype": "ratio",
+                           "label": "Current Ratio",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_current_assets / total_current_liabilities)"
+                        },
+                        {
+                           "id": "net_sales_or_working_capital",
+                           "ctype": "ratio",
+                           "label": "Net Sales/Working Capital",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_revenue / working_capital)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "leverage",
+                     "header": "Leverage",
+                     "line_items": [
+                        {
+                           "id": "net_worth_actual",
+                           "label": "Net Worth-Actual",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_net_worth)"
+                        },
+                        {
+                           "id": "tangible_net_worth_actual",
+                           "label": "Tangible Net Worth-Actual",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_net_worth - net_intangible_assets - employee_advances)"
+                        },
+                        {
+                           "id": "total_funded_debt",
+                           "label": "Total Funded Debt",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(lines_of_credit + cptld_cp_capital_leases + long_term_debt_bank + capital_lease_obligations + subordinated_debt_liab)"
+                        },
+                        {
+                           "id": "total_liabilities_or_networth",
+                           "ctype": "ratio",
+                           "label": "Total Liabilities/Net Worth ",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_liabilities / total_net_worth)"
+                        },
+                        {
+                           "id": "total_liabilities_or_tnw",
+                           "ctype": "ratio",
+                           "label": "Total Liabilities/TNW (Balance Sheet Leverage)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_liabilities / tangible_net_worth_actual)"
+                        },
+                        {
+                           "id": "total_liabilities_or_total_assets",
+                           "ctype": "ratio",
+                           "label": "Total Liabilities/Total Assets",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_liabilities / total_assets)"
+                        },
+                        {
+                           "id": "cfl_funded_debt_or_ebitda",
+                           "ctype": "ratio",
+                           "label": "CFL:  (Funded Debt / EBITDA)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_funded_debt / ebitda)"
+                        },
+                        {
+                           "id": "cfl_lease_adj_or_ebitdar",
+                           "ctype": "ratio",
+                           "label": "CFL:  (Lease Adj Funded Debt minus cash)/(EBITDAR)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=((total_funded_debt + (rent_expense * lease_multiple_estimate) - cash)/(ebitda + rent_expense))"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "coverage",
+                     "header": "Coverage",
+                     "line_items": [
+                        {
+                           "id": "hist_debt_service_coverage",
+                           "ctype": "ratio",
+                           "label": "Historical Debt Service Coverage",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(ebitda / (total_annual_debt_service_obligations - pro_forma_annual_debt_service))"
+                        },
+                        {
+                           "id": "hist_fixed_charge_coverage",
+                           "ctype": "ratio",
+                           "label": "Historical Fixed Charge Coverage",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(ebitda / (total_annual_debt_service_obligations - pro_forma_annual_debt_service + non_discretionary_distributions_estimate + maintenance_capex_estimate))"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "pro_forma_leverage_and_coverage",
+                     "header": "Pro forma leverage and coverage",
+                     "line_items": [
+                        {
+                           "id": "proforma_total_liab_or_worth",
+                           "ctype": "ratio",
+                           "label": "Pro Forma Total Liab/Worth",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=((total_liabilities + proforma_debt_totals) / total_net_worth)"
+                        },
+                        {
+                           "id": "proforma_total_liab_or_tnw",
+                           "ctype": "ratio",
+                           "label": "Pro Forma Total Liab/TNW (Balance Sheet Leverage)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=((total_liabilities + proforma_debt_totals) / tangible_net_worth_actual)"
+                        },
+                        {
+                           "id": "proforma_total_liabilities_or_total_assets",
+                           "ctype": "ratio",
+                           "label": "Pro Forma Total Liabilities/Total Assets",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=((total_liabilities + proforma_debt_totals) / total_assets)"
+                        },
+                        {
+                           "id": "proforma_cfl_funded_debt_or_ebitda",
+                           "ctype": "ratio",
+                           "label": "Pro Forma CFL:  (Funded Debt / EBITDA)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=((total_funded_debt + proforma_debt_totals) / (ebitda + plus_other_non_cash_cash + plus_pro_forma_income))"
+                        },
+                        {
+                           "id": "proforma_cfl_lease_adj_or_ebitdar",
+                           "ctype": "ratio",
+                           "label": "Pro Forma CFL:  (Lease Adj Funded Debt minus cash)/(EBITDAR)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=((total_funded_debt+proforma_debt_totals+(lease_multiple_estimate*rent_expense)-cash)/(ebitda+rent_expense+plus_other_non_cash_cash + plus_pro_forma_income))"
+                        },
+                        {
+                           "id": "proforma_dsc",
+                           "ctype": "ratio",
+                           "label": "Pro Forma DSC (Existing DS + Pro Forma DS)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(cash_flow_for_debt_service / total_annual_debt_service_obligations)"
+                        },
+                        {
+                           "id": "proforma_fcc",
+                           "ctype": "ratio",
+                           "label": "Pro Forma FCC (Existing DS + Pro Forma DS)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(cash_flow_for_debt_service / (total_annual_debt_service_obligations + income_tax_expense + maintenance_capex_estimate + non_discretionary_distributions_estimate))"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "tag_profitability",
+                     "header": "Profitability",
+                     "line_items": [
+                        {
+                           "id": "profitability_revenues",
+                           "label": "Revenues",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(total_revenue)"
+                        },
+                        {
+                           "id": "profitability_gross_margin_percent",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Gross Margin (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(gross_profit_margin_percent)"
+                        },
+                        {
+                           "id": "profitability_operating_profit_margin_percent",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Operating Profit Margin (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(net_operating_profit_margin_percent)"
+                        },
+                        {
+                           "id": "profitability_net_profit_percent",
+                           "label": "Net profit",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(net_profit)"
+                        },
+                        {
+                           "id": "profitability_net_profit_margin_percent",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Net Profit Margin (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(net_profit_margin_percent)"
+                        },
+                        {
+                           "id": "ebitda",
+                           "label": "EBITDA",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(depreciation_expense + amortization_expense + income_tax_expense + net_profit + interest_expense_minus + cost_of_sales_depreciation - gain_or_loss_on_asset_sale)"
+                        },
+                        {
+                           "id": "profitability_ebitda_margin",
+                           "ctype": "ratio_in_percentage",
+                           "label": "EBITDA Margin (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(ebitda/total_revenue)"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "activity",
+                     "header": "Activity",
+                     "line_items": [
+                        {
+                           "id": "ar_turnover_days",
+                           "ctype": "decimal",
+                           "label": "A/R Turnover Days",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(ar/total_revenue)*365"
+                        },
+                        {
+                           "id": "inventory_turnover_days",
+                           "ctype": "decimal",
+                           "label": "Inventory Turnover Days",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(inventory/total_cost_of_sales)*365"
+                        },
+                        {
+                           "id": "ap_turnover_days",
+                           "ctype": "decimal",
+                           "label": "A/P Turnover Days",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "=(accounts_payable_trade/total_cost_of_sales)*365"
+                        }
+                     ]
+                  },
+                  {
+                     "id": "growth",
+                     "header": "Growth",
+                     "line_items": [
+                        {
+                           "id": "total_assets_growth",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Total Assets Growth (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "GROWTH_RATIO(total_assets)"
+                        },
+                        {
+                           "id": "total_liabilities_growth",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Total Liabilities Growth (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "GROWTH_RATIO(total_liabilities)"
+                        },
+                        {
+                           "id": "net_worth_growth",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Net Worth Growth (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "GROWTH_RATIO(total_net_worth)"
+                        },
+                        {
+                           "id": "net_sales_growth",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Net Sales Growth (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "GROWTH_RATIO(profitability_revenues)"
+                        },
+                        {
+                           "id": "net_profit_growth",
+                           "ctype": "ratio_in_percentage",
+                           "label": "Net Profit Growth (%)",
+                           "style": [
+                              "emphasis",
+                              "readOnly"
+                           ],
+                           "columns": {
+                              "0": {
+                                 "value": null
+                              }
+                           },
+                           "formula": "GROWTH_RATIO(profitability_net_profit_percent)"
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "anchors": [
+            "current_assets_01",
+            "fixed_assets",
+            "current_liabilities",
+            "non_current_liabilities",
+            "net_worth",
+            "business_income_statement",
+            "additional_model_inputs",
+            "business_cash_flow",
+            "ratio_analysis"
+         ],
+         "validations": [
+            {
+               "id": "validate_totals",
+               "text": "Balance sheet totals must be balanced",
+               "ctype": "toggle",
+               "label": "Balance",
+               "formula": "=(total_assets-total_liabilities-total_net_worth)"
+            },
+            {
+               "id": "quick_ratio_heat_map",
+               "text": "Quick Ratio",
+               "ctype": "heatmap",
+               "formula": "=(IF(quick_ratio>1, 1, IF(AND(quick_ratio<=1, quick_ratio >=0.7), 0, -1)))",
+               "target_id": "quick_ratio"
+            },
+            {
+               "id": "total_liabilities_or_tnw_heat_map",
+               "text": "Balance Sheet Leverage",
+               "ctype": "heatmap",
+               "formula": "=(IF(total_liabilities_or_tnw<3, 1, IF(AND(total_liabilities_or_tnw>=3, total_liabilities_or_tnw <=4), 0, -1)))",
+               "target_id": "total_liabilities_or_tnw"
+            },
+            {
+               "id": "current_ratio_heat_map",
+               "text": "Current Ratio",
+               "ctype": "heatmap",
+               "formula": "=(IF(current_ratio>1.20, 1, IF(AND(current_ratio<=1.20, current_ratio >=1), 0, -1)))",
+               "target_id": "current_ratio"
+            },
+            {
+               "id": "net_sales_growth_heat_map",
+               "text": "Net Sales Growth",
+               "ctype": "heatmap",
+               "formula": "=(IF(net_sales_growth>0, 1, IF(AND(net_sales_growth<=0, net_sales_growth >=-0.05), 0, -1)))",
+               "target_id": "net_sales_growth"
+            }
+         ]
+      }
+   ],
+   "entityName": ""
+}

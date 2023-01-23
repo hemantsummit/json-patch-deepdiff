@@ -1,0 +1,36 @@
+{
+  "values_changed": {
+    "root['templates'][0]['groups'][0]['sub_groups'][7]['line_items'][0]['formula']": {
+      "new_value": "=(fixed_assets)-200",
+      "old_value": "=(fixed_assets)"
+    }
+  },
+  "iterable_item_added": {
+    "root['templates'][0]['groups'][0]['sub_groups'][6]['line_items'][1]": {
+      "id": "land_for_lease",
+      "tag": "Land",
+      "label": "Land For Lease",
+      "columns": {
+        "0": {
+          "value": null
+        }
+      },
+      "fallback": {
+        "label": "Land"
+      }
+    },
+    "root['templates'][0]['groups'][0]['sub_groups'][13]['line_items'][1]": {
+      "id": "overdrafts_from_bank",
+      "tag": "Overdrafts",
+      "label": "Overdrafts From Bank",
+      "columns": {
+        "0": {
+          "value": null
+        }
+      },
+      "fallback": {
+        "label": "Overdrafts From Bank"
+      }
+    }
+  }
+}
